@@ -1,11 +1,24 @@
 {
   "env": {
-    "browser": true,
-    "es6": true
+    "browser": true, // 브라우저 전역 변수를 사용하여 브라우저 환경을 나타냅니다.
+    "es6": true // ECMAScript 6 특징들을 사용할 것임을 나타냅니다.
   },
-  "extends": ["eslint:recommended", "next/core-web-vitals", "prettier"],
-  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended", // ESLint의 권장 설정을 사용합니다.
+    "next/core-web-vitals", // Next.js Core Web Vitals을 활용하기 위한 린팅 규칙을 적용합니다.
+    "prettier" // Prettier의 린팅 설정을 확장합니다.
+  ],
+  "plugins": [
+    "prettier" // Prettier 플러그인을 사용합니다. 이 플러그인은 코드 포맷팅과 관련된 규칙을 제공합니다.
+  ],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error" // Prettier에서 발견된 어떠한 이슈도 "error"로 처리하여, 코드가 Prettier 포맷에 어긋나면 에러를 발생시킵니다.
   }
 }
+// env: 코드가 실행되는 환경에 대한 정보를 설정합니다. 여기에서는 브라우저 환경과 ES6 문법을 사용할 것임을 지정하였습니다.
+
+// extends: 어떤 기본 설정을 확장(extend)할지를 정의합니다. 이 예시에서는 ESLint의 권장 설정, Next.js의 웹 성능 관련 린팅 규칙, 그리고 Prettier의 설정을 확장하고 있습니다.
+
+// plugins: 사용할 플러그인의 목록입니다. 이 설정에서는 Prettier 플러그인을 사용합니다.
+
+// rules: 프로젝트에 적용할 규칙을 정의합니다. prettier/prettier 규칙이 "error"로 설정되어 있으므로, Prettier의 포맷과 일치하지 않는 코드가 있을 경우 ESLint가 오류를 발생시킵니다.

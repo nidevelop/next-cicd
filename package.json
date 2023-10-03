@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-mongodb-app",
+  "name": "ni-website-templete",
   "version": "1.0.0",
-  "description": "Full fledged app made with Next.JS and MongoDB",
+  "description": "엔아이 프로젝트 틀",
   "main": "index.js",
   "scripts": {
     "dev": "next dev -p 3003",
@@ -10,15 +10,8 @@
     "lint": "next lint"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hoangvvo/nextjs-mongodb-app.git"
+    "type": "git"
   },
-  "author": "Hoang Vo (https://hoangvvo.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hoangvvo/nextjs-mongodb-app/issues"
-  },
-  "homepage": "https://github.com/hoangvvo/nextjs-mongodb-app#readme",
   "dependencies": {
     "@lukeed/ms": "^2.0.0",
     "ajv": "^8.11.0",
@@ -31,7 +24,7 @@
     "mongodb": "^4.7.0",
     "multer": "^1.4.5-lts.1",
     "nanoid": "^4.0.0",
-    "next": "^12.1.6",
+    "next": "13.5.3",
     "next-connect": "^0.12.2",
     "next-session": "^4.0.4",
     "next-themes": "^0.2.0",

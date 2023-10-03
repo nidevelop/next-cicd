@@ -10,21 +10,27 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import styles from './Settings.module.css';
 
+// 이메일 검증 컴포넌트
 const EmailVerify = ({ user }) => {
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState();  // 상태 설정 ('loading' 또는 'success')
+  
+  // 이메일 검증 요청 함수
   const verify = useCallback(async () => {
     try {
-      setStatus('loading');
+      setStatus('loading');  // 로딩 상태로 설정
+      // 이메일 검증 API 호출
       await fetcher('/api/user/email/verify', { method: 'POST' });
-      toast.success(
-        'An email has been sent to your mailbox. Follow the instruction to verify your email.'
-      );
-      setStatus('success');
+      // 성공 메시지 표시
+      toast.success('An email has been sent to your mailbox. Follow the instruction to verify your email.');
+      setStatus('success');  // 성공 상태로 설정
     } catch (e) {
+      // 에러 메시지 표시
       toast.error(e.message);
-      setStatus('');
+      setStatus('');  // 상태 초기화
     }
   }, []);
+  
+  // 이메일이 이미 검증되었는지 확인
   if (user.emailVerified) return null;
   return (
     <Container className={styles.note}>
@@ -47,16 +53,20 @@ const EmailVerify = ({ user }) => {
   );
 };
 
+// 비밀번호 업데이트 컴포넌트
 const Auth = () => {
+  // 비밀번호 참조 설정
   const oldPasswordRef = useRef();
   const newPasswordRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // 비밀번호 제출 핸들러
   const onSubmit = useCallback(async (e) => {
     e.preventDefault();
     try {
-      setIsLoading(true);
+      setIsLoading(true); // 로딩 상태로 설정
+      // 비밀번호 업데이트 API 호출
       await fetcher('/api/user/password', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -65,11 +75,14 @@ const Auth = () => {
           newPassword: newPasswordRef.current.value,
         }),
       });
+      // 성공 메시지 표시
       toast.success('Your password has been updated');
     } catch (e) {
+      // 에러 메시지 표시
       toast.error(e.message);
     } finally {
-      setIsLoading(false);
+      setIsLoading(false); // 로딩 상태 해제
+      // 비밀번호 필드 초기화
       oldPasswordRef.current.value = '';
       newPasswordRef.current.value = '';
     }
@@ -106,13 +119,16 @@ const Auth = () => {
   );
 };
 
+// 사용자 프로필 업데이트 컴포넌트
 const AboutYou = ({ user, mutate }) => {
+  // 참조 및 상태 설정
   const usernameRef = useRef();
   const nameRef = useRef();
   const bioRef = useRef();
   const profilePictureRef = useRef();
-
   const [avatarHref, setAvatarHref] = useState(user.profilePicture);
+
+  // 아바타 변경 핸들러
   const onAvatarChange = useCallback((e) => {
     const file = e.currentTarget.files?.[0];
     if (!file) return;
@@ -125,6 +141,7 @@ const AboutYou = ({ user, mutate }) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  // 프로필 제출 핸들러
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
@@ -152,6 +169,7 @@ const AboutYou = ({ user, mutate }) => {
     [mutate]
   );
 
+  // 사용자 데이터가 변경될 때 입력값 업데이트
   useEffect(() => {
     usernameRef.current.value = user.username;
     nameRef.current.value = user.name;
@@ -195,10 +213,15 @@ const AboutYou = ({ user, mutate }) => {
   );
 };
 
+// 메인 설정 컴포넌트
 export const Settings = () => {
+  // 사용자 데이터 훅
   const { data, error, mutate } = useCurrentUser();
   const router = useRouter();
+
+  // 사용자 데이터가 로드되거나 오류가 발생할 때 처리
   useEffect(() => {
+    // 로그인 상태가 아니면 로그인 페이지로 리다이렉트
     if (!data && !error) return;
     if (!data.user) {
       router.replace('/login');

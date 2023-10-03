@@ -1,14 +1,25 @@
-root = true
+# 이 설정 파일이 최상위(root) 설정임을 명시합니다. 이로써 이 디렉토리를 기준으로 하위 디렉토리에 있는 모든 파일에 이 설정이 적용됩니다.
+root = true 
 
+# 모든 파일에 대한 기본 설정을 정의합니다.
 [*]
-charset = utf-8
-end_of_line = lf
-trim_trailing_whitespace = true
+# 파일 인코딩을 UTF-8로 설정합니다.
+charset = utf-8 
+# 줄바꿈 문자를 LF(Line Feed, Unix 스타일)로 설정합니다.
+end_of_line = lf 
+# 줄 끝의 공백 문자를 자동으로 제거합니다.
+trim_trailing_whitespace = true 
 
+# .js와 .jsx 확장자를 가진 파일에 대한 설정을 정의합니다.
 [*.{js,jsx}]
-insert_final_newline = true
-indent_style = space
-indent_size = 2
+# 파일의 마지막에 새로운 줄을 자동으로 추가합니다.
+insert_final_newline = true 
+# 들여쓰기 스타일을 공백 문자로 설정합니다.
+indent_style = space 
+# 들여쓰기의 크기를 2로 설정합니다.
+indent_size = 2 
 
+# .md 확장자를 가진 파일 (Markdown 파일)에 대한 설정을 정의합니다.
 [*.md]
-trim_trailing_whitespace = false
+# 마크다운 파일에서는 줄 끝의 공백 문자를 제거하지 않습니다. (마크다운에서 줄 끝의 두 개의 공백은 줄바꿈을 의미합니다.)
+trim_trailing_whitespace = false 

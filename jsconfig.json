@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
+    // 기본 URL로 프로젝트 루트 디렉토리를 설정합니다.
     "baseUrl": ".",
+    // 경로 옵션은 모듈 가져오기에 사용되는 경로의 alias 및 remapping을 정의합니다.
     "paths": {
+      // "@/components/*"를 사용해 "components/*" 경로를 참조합니다.
       "@/components/*": ["components/*"],
+      // "@/page-components/*"를 사용해 "page-components/*" 경로를 참조합니다.
       "@/page-components/*": ["page-components/*"],
+      // "@/lib/*"를 사용해 "lib/*" 경로를 참조합니다.
       "@/lib/*": ["lib/*"],
+      // "@/api-lib/*"를 사용해 "api-lib/*" 경로를 참조합니다.
       "@/api-lib/*": ["api-lib/*"],
+      // "@/assets/*"를 사용해 "assets/*" 경로를 참조합니다.
       "@/assets/*": ["assets/*"]
     }
   }

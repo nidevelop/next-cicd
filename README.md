@@ -1,84 +1,3 @@
-[![Next.js](https://assets.zeit.co/image/upload/v1538361091/repositories/next-js/next-js.png)](https://nextjs.org)
-
-<h1 align="center">Next.js ❤️ MongoDB</h1>
-
-<div align="center">
-  
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhoangvvo%2Fnextjs-mongodb-app&env=MONGODB_URI,CLOUDINARY_URL,NODEMAILER_CONFIG,WEB_URI&envDescription=Environment%20Variables&envLink=https%3A%2F%2Fgithub.com%2Fhoangvvo%2Fnextjs-mongodb-app%23environmental-variables&demo-title=nextjs-mongodb-app%20demo&demo-description=A%20demo%20deployed%20on%20Vercel&demo-url=https%3A%2F%2Fnextjs-mongodb.vercel.app%2F)
-
-An [**Next.js**](https://github.com/zeit/next.js/) and [**MongoDB**](https://www.mongodb.com/) web application, designed with simplicity for learning and real-world applicability in mind.
-
-:rocket: [Check out the demo](https://nextjs-mongodb.vercel.app/) :rocket:
-
-</div>
-
-<h2 align="center">Features</h2>
-
-<div align="center">
-
-🐇 Fast and light without [bulky](https://bundlephobia.com/result?p=express@4.17.1), [slow](https://github.com/fastify/benchmarks#benchmarks) Express.js.
-
-✨ Full [API Routes](https://nextjs.org/blog/next-9#api-routes) implementation and 👻 Serverless ready
-
-🤠 Good ol' Middleware pattern, compatible with Express ecosystem, powered by [next-connect](https://github.com/hoangvvo/next-connect)
-
-💋 [KISS](https://en.wikipedia.org/wiki/KISS_principle): No fancy stuff like GraphQL, SASS, Redux, etc.
-✍️ Come with explanatory blog posts
-
-📙 Can be adapted to any databases besides MongoDB (Just update [api-lib/db](api-lib/db))
-
-</div>
-
-<h3 align="center">:lock: Authentication and Account</h3>
-
-<div align="center">
-
-- [x] Session-based authentication ([Passport.js](https://github.com/jaredhanson/passport))
-- [x] Sign up/Log in/Sign out API
-- [x] Authentication via email/password
-- [ ] Authentication via OAuth (Google, Facebook, etc.)
-- [x] Email verification
-- [x] Password change
-- [x] Password reset via email
-
-</div>
-
-<h3 align="center">:woman::man: Profile</h3>
-
-<div align="center">
-
-- [x] Profile picture, username, name, bio, email
-- [x] Update user profile
-
-</div>
-
-<h3 align="center">:eyes: Social</h3>
-
-<div align="center">
-
-- [x] View others' profiles
-- [x] Posts and comments
-
-</div>
-
-<div align="center">
-  
-<sup>Have any features that interest you, [make an issue](https://github.com/hoangvvo/nextjs-mongodb-app/issues). Would like to work on a feature, [make a PR](https://github.com/hoangvvo/nextjs-mongodb-app/pulls).<sup>
-  
-</div>
-
-<h2 align="center">Guide</h2>
-
-This project accompanies the following posts:
-
-- [User authentication (using Passport.js)](https://hoangvvo.com/blog/next-js-and-mongodb-app-1)
-- [User profile and Profile Picture](https://hoangvvo.com/blog/next-js-and-mongodb-app-2)
-- [Email Verification, Password Reset/Changee](https://hoangvvo.com/blog/next-js-and-mongodb-app-3)
-- [Posts and comments](https://hoangvvo.com/blog/next-js-and-mongodb-app-4)
-
-Also check them out on [dev.to](https://dev.to/hoangvvo).
-
-Although the project is written to be secure, its simplicity requires careful considerations for usage in sensitive productions. [File an issue](https://github.com/hoangvvo/nextjs-mongodb-app/issues/new/choose) if you spot any security problems.
 
 <h3 align="center">Dependencies</h3>
 
@@ -113,28 +32,26 @@ Environmental variables in this project include:
 
 Start the development server by running `yarn dev` or `npm run dev`. Getting started by create a `.env.local` file with the above variables. See [Environment Variables](https://nextjs.org/docs/basic-features/environment-variables).
 
-<h2 align="center">Deployment</h2>
+```
+{
+  "singleQuote": true, 
+  // 모든 문장의 마지막에 세미콜론(;)을 추가합니다.
+  "semi": true,
+  // 화살표 함수에서 괄호를 항상 포함시킵니다. 예: (x) => x
+  "arrowParens": "always",
+  // 여러 줄을 사용하여 객체, 배열, 함수 등을 정의할 때, 마지막 항목 또는 매개변수 다음에도 쉼표를 붙입니다.
+  "trailingComma": "all",
+  // JSX 요소의 닫는 꺾쇠 괄호 '>'를 다음 줄로 줄바꿈합니다.
+  "jsxBracketSameLine": false,
+  // 파일의 끝에 개행 문자를 추가합니다.
+  "endOfLine": "lf",
+  // 최대 줄 길이를 80으로 제한합니다.
+  "printWidth": 80,
+  // 탭 대신 공백을 사용하여 들여쓰기합니다.
+  "useTabs": false,
+  // 들여쓰기 너비를 2로 설정합니다.
+  "tabWidth": 2
+}
 
-This project can be deployed [anywhere Next.js can be deployed](https://nextjs.org/docs/deployment). Make sure to set the environment variables using the options provided by your cloud/hosting providers.
+```
 
-After building using `npm run build`, simply start the server using `npm run start`.
-
-You can also deploy this with serverless providers given the correct setup.
-
-<h2 align="center">Contributing</h2>
-
-<div align="center">
-  
-Please see my [contributing.md](CONTRIBUTING.md).
-
-</div>
-
-<h2 align="center">
-  License
-</h2>
-
-<div align="center">
-  
-  [MIT](LICENSE)
-  
-</div>

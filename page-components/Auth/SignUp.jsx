@@ -11,22 +11,30 @@ import toast from 'react-hot-toast';
 import styles from './Auth.module.css';
 
 const SignUp = () => {
+  // 각 입력 필드에 대한 참조를 생성합니다.
   const emailRef = useRef();
   const passwordRef = useRef();
   const usernameRef = useRef();
   const nameRef = useRef();
 
+  // 현재 사용자의 상태를 갱신하기 위한 mutate 함수를 얻습니다.
   const { mutate } = useCurrentUser();
 
+  // 로딩 상태를 관리하는 state를 정의합니다.
   const [isLoading, setIsLoading] = useState(false);
 
+  // 라우터 인스턴스를 얻습니다.
   const router = useRouter();
 
+  // 폼 제출 핸들러를 정의합니다.
   const onSubmit = useCallback(
     async (e) => {
+      // 기본 폼 제출 동작을 막습니다.
       e.preventDefault();
       try {
+        // 로딩 상태를 활성화합니다.
         setIsLoading(true);
+        // '/api/users' 엔드포인트에 사용자 데이터를 POST하여 계정을 생성합니다.
         const response = await fetcher('/api/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -37,18 +45,24 @@ const SignUp = () => {
             username: usernameRef.current.value,
           }),
         });
+        // 사용자 데이터를 갱신하고, 성공 메시지를 표시합니다.
         mutate({ user: response.user }, false);
         toast.success('Your account has been created');
+        // 사용자를 피드 페이지로 리다이렉트합니다.
         router.replace('/feed');
       } catch (e) {
+        // 에러 발생 시, 에러 메시지를 표시합니다.
         toast.error(e.message);
       } finally {
+        // 로딩 상태를 비활성화합니다.
         setIsLoading(false);
       }
     },
+    // 의존성 배열입니다.
     [mutate, router]
   );
 
+  // 컴포넌트 UI를 렌더링합니다.
   return (
     <Wrapper className={styles.root}>
       <div className={styles.main}>
@@ -112,7 +126,7 @@ const SignUp = () => {
         </form>
       </div>
       <div className={styles.footer}>
-        <Link href="/login" passHref>
+        <Link legacyBehavior href="/login" passHref>
           <TextLink color="link" variant="highlight">
             Already have an account? Log in
           </TextLink>
