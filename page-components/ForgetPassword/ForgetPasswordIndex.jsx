@@ -1,6 +1,13 @@
-// 필요한 컴포넌트와 라이브러리를 import합니다.
 import { Button } from '@/components/Button';
-// ... [다른 import 문]
+import { ButtonLink } from '@/components/Button/Button';
+import { Input } from '@/components/Input';
+import { Spacer, Wrapper } from '@/components/Layout';
+import { Text } from '@/components/Text';
+import { fetcher } from '@/lib/fetch';
+import Link from 'next/link';
+import { useCallback, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import styles from './ForgetPassword.module.css';
 
 const ForgetPasswordIndex = () => {
   // useRef와 useState를 사용하여 상태와 참조를 생성합니다.
@@ -11,12 +18,9 @@ const ForgetPasswordIndex = () => {
 
   // onSubmit 이벤트 핸들러를 정의합니다.
   const onSubmit = useCallback(async (e) => {
-    // 기본 폼 제출을 방지합니다.
     e.preventDefault();
     try {
-      // 로딩 상태를 설정합니다.
       setStatus('loading');
-      // 패스워드 재설정 이메일을 보내는 API를 호출합니다.
       await fetcher('/api/user/password/reset', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -24,12 +28,9 @@ const ForgetPasswordIndex = () => {
           email: emailRef.current.value,
         }),
       });
-      // 성공적으로 이메일이 보내졌으면, 이메일 상태를 업데이트하고
-      // 상태를 'success'로 설정합니다.
       setEmail(emailRef.current.value);
       setStatus('success');
     } catch (e) {
-      // 에러가 발생하면, 토스트 메시지로 에러를 알리고 상태를 초기화합니다.
       toast.error(e.message);
       setStatus(undefined);
     }
@@ -39,7 +40,6 @@ const ForgetPasswordIndex = () => {
     <Wrapper className={styles.root}>
       <div className={styles.main}>
         {status === 'success' ? (
-          // 성공 상태일 때 보여질 UI를 렌더링합니다.
           <>
             <h1 className={styles.title}>Check your inbox</h1>
             <p className={styles.subtitle}>
@@ -51,7 +51,6 @@ const ForgetPasswordIndex = () => {
             </p>
           </>
         ) : (
-          // 기본 상태(이메일 입력 폼)를 렌더링합니다.
           <>
             <h1 className={styles.title}>Forget Password</h1>
             <p className={styles.subtitle}>
@@ -83,7 +82,6 @@ const ForgetPasswordIndex = () => {
           </>
         )}
         <Spacer size={0.25} axis="vertical" />
-        // 로그인 페이지로 돌아가는 링크를 제공합니다.
         <Link legacyBehavior href="/login" passHref>
           <ButtonLink type="success" size="large" variant="ghost">
             Return to login
@@ -94,5 +92,4 @@ const ForgetPasswordIndex = () => {
   );
 };
 
-// ForgetPasswordIndex 컴포넌트를 export합니다.
 export default ForgetPasswordIndex;
