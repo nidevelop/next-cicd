@@ -9,11 +9,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Wrapper>
         <Text color="accents-7">
-          Made with ❤️, 🔥, and a keyboard by{' '}
-          <TextLink href="https://hoangvvo.com/" color="link">
-            Hoang Vo
-          </TextLink>
-          .
+          주식회사 엔아이 | 대표자: 이나단 | 사업자등록번호: 453-81-02837
         </Text>
         <Spacer size={1} axis="vertical" />
         <ThemeSwitcher />
