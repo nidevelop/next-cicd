@@ -104,9 +104,11 @@ const Login = () => {
       </div>
       <div className={styles.footer}>
         <Link legacyBehavior href="/sign-up" passHref>
-          <TextLink color="link" variant="highlight">
-            Don&apos;t have an account? Sign Up
-          </TextLink>
+          <a>
+            <TextLink color="link" variant="highlight">
+              Don&apos;t have an account? Sign Up
+            </TextLink>
+          </a>
         </Link>
       </div>
     </Wrapper>
